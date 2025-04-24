@@ -1,0 +1,116 @@
+.skills {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.skills.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.skills-category {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skills-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.skills-category h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.skill-icon {
+  font-size: 1.2rem;
+}
+
+.skill-icon.html {
+  color: #e44d26;
+}
+.skill-icon.css {
+  color: #264de4;
+}
+.skill-icon.js {
+  color: #f7df1e;
+}
+.skill-icon.react {
+  color: #61dafb;
+}
+.skill-icon.next {
+  color: #ffffff;
+}
+.skill-icon.ts {
+  color: #3178c6;
+}
+.skill-icon.node {
+  color: #339933;
+}
+.skill-icon.express {
+  color: #ffffff;
+}
+.skill-icon.mongo {
+  color: #47a248;
+}
+.skill-icon.mysql {
+  color: #4479a1;
+}
+.skill-icon.python {
+  color: #3776ab;
+}
+.skill-icon.php {
+  color: #777bb4;
+}
+.skill-icon.git {
+  color: #f05032;
+}
+.skill-icon.docker {
+  color: #2496ed;
+}
+.skill-icon.aws {
+  color: #ff9900;
+}
+.skill-icon.jenkins {
+  color: #d33833;
+}
+.skill-icon.wordpress {
+  color: #21759b;
+}
+.skill-icon.shopify {
+  color: #7ab55c;
+}
+.skill-icon.tailwind {
+  color: #38b2ac;
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

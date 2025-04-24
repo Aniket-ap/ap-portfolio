@@ -1,0 +1,33 @@
+.all-projects {
+  padding-top: 120px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.all-projects.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-link {
+  margin-bottom: 2rem;
+}
+
+.all-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .all-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .all-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
