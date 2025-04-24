@@ -49,7 +49,7 @@ const Hero = () => {
             both front-end and back-end development, I specialize in the MERN stack and other modern technologies to
             create seamless user experiences and efficient solutions.
           </p>
-          <a href="/Resume.pdf" className="btn btn-primary" download>
+          <a href="https://raw.githubusercontent.com/Aniket-ap/ap-portfolio/main/Resume.pdf" className="btn btn-primary" download>
             <FaDownload className="btn-icon" /> DOWNLOAD CV
           </a>
         </div>
