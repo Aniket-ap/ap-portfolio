@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa"
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +13,12 @@ const Contact = () => {
   })
   const [formStatus, setFormStatus] = useState(null)
   const contactRef = useRef(null)
+  const form = useRef(null)
 
   useEffect(() => {
+    // Initialize EmailJS once when component mounts
+    emailjs.init("4O23ZscDGF3TUOKUB") // Your public key
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -44,10 +49,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Simulate form submission
     setFormStatus("sending")
 
-    setTimeout(() => {
+    // Get current date and time for the template
+    const now = new Date()
+    const formattedTime = now.toLocaleString()
+
+    // Send the email with the template
+    emailjs.send(
+      'service_tta7pn2',  // Your service ID
+      'template_u4aicqh',  // Create this template in EmailJS dashboard with the HTML above
+      {
+        from_name: formData.name,
+        reply_to: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        time: formattedTime,
+        to_email: 'pro.aniket08@gmail.com'
+      },
+      '4O23ZscDGF3TUOKUB'  // Your public key
+    )
+    .then((result) => {
+      console.log('Email sent successfully:', result.text)
       setFormStatus("success")
       setFormData({
         name: "",
@@ -56,11 +79,18 @@ const Contact = () => {
         message: "",
       })
 
-      // Reset form status after 3 seconds
       setTimeout(() => {
         setFormStatus(null)
       }, 3000)
-    }, 1500)
+    })
+    .catch((error) => {
+      console.error('Email sending failed:', error.text)
+      setFormStatus("error")
+      
+      setTimeout(() => {
+        setFormStatus(null)
+      }, 3000)
+    })
   }
 
   return (
@@ -105,7 +135,7 @@ const Contact = () => {
           </div>
 
           <div className="contact-form-container">
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form ref={form} onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -164,6 +194,7 @@ const Contact = () => {
               </button>
 
               {formStatus === "success" && <div className="form-success">Message sent successfully!</div>}
+              {formStatus === "error" && <div className="form-error">Failed to send message. Please try again.</div>}
             </form>
           </div>
         </div>

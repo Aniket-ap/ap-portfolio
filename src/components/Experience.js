@@ -68,7 +68,7 @@ const Experience = () => {
       id: 3,
       title: "Frontend Developer Intern",
       company: "StoryXpress",
-      period: "Jan 2023 - Apr 2023",
+      period: "Dec 2020 - Apr 2020",
       description: [
         "Developed and maintained responsive user interfaces using React.js",
         "Collaborated with designers to implement UI/UX designs",
