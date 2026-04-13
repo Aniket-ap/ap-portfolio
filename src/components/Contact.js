@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa"
+import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa"
 import emailjs from '@emailjs/browser'
+import "./Contact.css"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   })
   const [formStatus, setFormStatus] = useState(null)
@@ -62,7 +62,7 @@ const Contact = () => {
       {
         from_name: formData.name,
         reply_to: formData.email,
-        subject: formData.subject,
+        subject: `Contact Form Submission from ${formData.name}`,
         message: formData.message,
         time: formattedTime,
         to_email: 'pro.aniket08@gmail.com'
@@ -75,7 +75,6 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
-        subject: "",
         message: "",
       })
 
@@ -115,16 +114,6 @@ const Contact = () => {
 
             <div className="contact-card">
               <div className="contact-icon">
-                <FaPhone />
-              </div>
-              <div className="contact-details">
-                <h3>Phone</h3>
-                <p>+91 7330872430</p>
-              </div>
-            </div>
-
-            <div className="contact-card">
-              <div className="contact-icon">
                 <FaMapMarkerAlt />
               </div>
               <div className="contact-details">
@@ -136,43 +125,32 @@ const Contact = () => {
 
           <div className="contact-form-container">
             <form ref={form} onSubmit={handleSubmit} className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your name"
-                />
-              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your name"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="Subject of your message"
-                />
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="your.email@example.com"
+                  />
+                </div>
               </div>
 
               <div className="form-group">
@@ -180,7 +158,7 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  rows="5"
+                  rows="4"
                   value={formData.message}
                   onChange={handleChange}
                   required

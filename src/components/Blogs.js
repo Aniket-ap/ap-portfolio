@@ -50,7 +50,7 @@ const Blogs = () => {
     <section id="blogs" className="section blogs" ref={blogsRef}>
       <div className="container">
         <h2 className="section-title">Blogs</h2>
-        <p className="section-subtitle">Articles and tutorials I've written to share my knowledge and experiences</p>
+        <p className="section-subtitle">Articles and tutorials I’ve written to share my knowledge and experiences</p>
 
         <div className="blogs-grid">
           {blogs.map((blog) => (

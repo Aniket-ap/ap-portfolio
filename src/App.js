@@ -9,8 +9,6 @@ import Skills from "./components/Skills"
 import Experience from "./components/Experience"
 import Projects from "./components/Projects"
 import AllProjects from "./components/AllProjects"
-import Blogs from "./components/Blogs"
-import AllBlogs from "./components/AllBlogs"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
@@ -46,14 +44,13 @@ function App() {
                 <About />
                 <Skills />
                 <Experience />
-                {/* <Projects /> */}
-                <Blogs />
+                <Projects />
                 <Contact />
               </>
             }
           />
-          {/* <Route path="/projects" element={<AllProjects />} />
-          <Route path="/blogs" element={<AllBlogs />} /> */}
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/projects/:slug" element={<AllProjects />} />
         </Routes>
         <Footer />
       </div>

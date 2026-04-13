@@ -87,7 +87,7 @@ const AllBlogs = () => {
         </div>
 
         <h2 className="section-title">All Blogs</h2>
-        <p className="section-subtitle">A comprehensive collection of articles and tutorials I've written</p>
+        <p className="section-subtitle">A comprehensive collection of articles and tutorials I’ve written</p>
 
         <div className="all-blogs-grid">
           {blogs.map((blog) => (

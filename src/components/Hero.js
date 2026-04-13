@@ -42,12 +42,10 @@ const Hero = () => {
             <span className="hero-name">Aniket Pradhan</span>
           </h1>
           <h2 className="hero-subtitle">
-            I am a <span className="typed-text">Web Developer</span>
+            I am a <span className="typed-text">Full Stack Developer</span>
           </h2>
           <p className="hero-description">
-            I am a Senior Web Developer with 2 years of experience in building scalable web applications. Skilled in
-            both front-end and back-end development, I specialize in the MERN stack and other modern technologies to
-            create seamless user experiences and efficient solutions.
+            Full Stack Developer with 3+ years of experience creating modern web applications using React, Next.js, and Node.js. Skilled in delivering production-ready CMS solutions with WordPress (custom themes and plugins) and Shopify (theme customization), along with implementing marketing and analytics tracking using GTM, GA4, and Google Ads.
           </p>
           <a href="https://raw.githubusercontent.com/Aniket-ap/ap-portfolio/main/Resume.pdf" className="btn btn-primary" download>
             <FaDownload className="btn-icon" /> DOWNLOAD CV

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { FaCode, FaLaptopCode, FaServer, FaMobileAlt } from "react-icons/fa"
+import { FaChartLine, FaCode, FaLaptopCode, FaServer } from "react-icons/fa"
 import "./About.css"
 
 const About = () => {
@@ -37,19 +37,19 @@ const About = () => {
         <div className="about-content">
           <div className="about-text">
             <p>
-              As a web developer with 2 years of experience, I've had the opportunity to work on various projects with
-              different tools and languages. My journey in web development has been exciting and full of learning
-              experiences.
+              I’m a Full Stack Developer with 3+ years of experience building fast, reliable web products—from
+              marketing websites to full-featured applications. I enjoy taking ownership end-to-end: UI, APIs, data,
+              deployments, and the tracking that proves what’s working.
             </p>
             <p>
-              I specialize in building responsive and user-friendly web applications using modern technologies like
-              React, Node.js, and MongoDB. I'm passionate about creating clean, efficient code and delivering
-              high-quality solutions that meet client needs.
+              My core stack is React, Node.js, and Next.js. Alongside that, I build CMS-based solutions using WordPress
+              (custom themes and plugins) and Shopify (theme customization and storefront improvements). I focus on
+              clean architecture, performance, and a great user experience across devices.
             </p>
             <p>
-              Throughout my career, I've worked with diverse teams and clients, which has enhanced my communication and
-              collaboration skills. I'm always eager to learn new technologies and stay updated with the latest trends
-              in web development.
+              I also work closely with marketing and growth needs—implementing GTM, data layers, GA4 reporting, and
+              Google Ads conversion tracking (including offline conversions via APIs). I use analytics insights to
+              iterate on landing pages, funnels, and product flows.
             </p>
           </div>
 
@@ -58,32 +58,32 @@ const About = () => {
               <div className="service-icon">
                 <FaCode />
               </div>
-              <h3>Web Development</h3>
-              <p>Building responsive and dynamic websites with modern frameworks</p>
+              <h3>Full-Stack Apps</h3>
+              <p>Building scalable web apps with React, Next.js, Node.js, and modern APIs</p>
             </div>
 
             <div className="service-card">
               <div className="service-icon">
                 <FaServer />
               </div>
-              <h3>Backend Development</h3>
-              <p>Creating robust server-side applications and APIs</p>
+              <h3>Backend & APIs</h3>
+              <p>Designing secure APIs, auth flows, and integrations with third-party services</p>
             </div>
 
             <div className="service-card">
               <div className="service-icon">
                 <FaLaptopCode />
               </div>
-              <h3>Frontend Development</h3>
-              <p>Designing intuitive user interfaces with modern frameworks</p>
+              <h3>CMS Development</h3>
+              <p>WordPress custom themes/plugins and Shopify theme customization for growth-focused stores</p>
             </div>
 
             <div className="service-card">
               <div className="service-icon">
-                <FaMobileAlt />
+                <FaChartLine />
               </div>
-              <h3>Mobile Development</h3>
-              <p>Building cross-platform mobile applications with React Native</p>
+              <h3>Analytics & Tracking</h3>
+              <p>GTM + GA4 + Google Ads tracking with data layers and conversion optimization</p>
             </div>
           </div>
         </div>

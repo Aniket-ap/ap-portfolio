@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { FaBriefcase, FaCalendarAlt, FaChevronDown, FaChevronUp } from "react-icons/fa"
+import "./Experience.css"
 
 const Experience = () => {
   const experienceRef = useRef(null)
@@ -38,9 +39,22 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
+      title: "Software Engineer",
+      company: "Quadrant Technologies",
+      period: "Jul 2025 - Present",
+      description: [
+        "Build and maintain production web applications using React, Next.js, and Node.js",
+        "Develop REST APIs and integrations while focusing on performance, security, and maintainability",
+        "Collaborate with design, product, and QA to deliver reliable releases",
+        "Work on analytics and conversion tracking with GTM, GA4, and Google Ads where needed",
+      ],
+      technologies: ["React", "Next.js", "Node.js", "TypeScript", "GTM", "GA4"],
+    },
+    {
+      id: 2,
       title: "Senior Web Developer",
       company: "ShortOrder",
-      period: "May 2023 - Present",
+      period: "May 2023 - Jun 2025",
       description: [
         "Lead the development of responsive web applications using React.js and Node.js",
         "Implemented CI/CD pipelines using Jenkins for automated testing and deployment",
@@ -51,7 +65,7 @@ const Experience = () => {
       technologies: ["React", "Node.js", "MongoDB", "AWS", "Jenkins"],
     },
     {
-      id: 2,
+      id: 3,
       title: "Freelance Developer",
       company: "Upwork",
       period: "Jan 2022 - Apr 2023",
@@ -65,10 +79,10 @@ const Experience = () => {
       technologies: ["React", "Next.js", "Tailwind CSS", "Stripe", "Firebase"],
     },
     {
-      id: 3,
+      id: 4,
       title: "Frontend Developer Intern",
       company: "StoryXpress",
-      period: "Dec 2020 - Apr 2020",
+      period: "Dec 2020 - Apr 2021",
       description: [
         "Developed and maintained responsive user interfaces using React.js",
         "Collaborated with designers to implement UI/UX designs",

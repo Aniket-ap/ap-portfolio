@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import "./Projects.css"
 
@@ -32,32 +32,32 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      slug: "ecommerce-app",
+      title: "Ecommerce App",
       description:
-        "A full-featured e-commerce platform with product management, cart functionality, and payment integration.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      github: "https://github.com/aniket-pradhan/ecommerce-platform",
-      live: "https://ecommerce-platform-demo.vercel.app",
+        "A modern e-commerce experience with product discovery, cart, checkout flow, and an admin-friendly structure.",
+      image:
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=60",
+      technologies: ["Next.js", "React", "Node.js", "MongoDB", "Stripe"],
     },
     {
       id: 2,
-      title: "Task Management App",
+      slug: "banking-backend-api",
+      title: "Banking Backend API",
       description:
-        "A collaborative task management application with real-time updates and team collaboration features.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "Firebase", "Tailwind CSS", "Redux"],
-      github: "https://github.com/aniket-pradhan/task-management",
-      live: "https://task-management-demo.vercel.app",
+        "API-first backend that models accounts and transactions with a safe, auditable transaction workflow.",
+      image:
+        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=60",
+      technologies: ["Node.js", "Express", "PostgreSQL", "Redis", "JWT"],
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A weather dashboard that displays current weather conditions and forecasts for multiple locations.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "OpenWeather API", "Chart.js", "Styled Components"],
-      github: "https://github.com/aniket-pradhan/weather-dashboard",
-      live: "https://weather-dashboard-demo.vercel.app",
+      slug: "chat-app",
+      title: "Real-time Chat App",
+      description: "Real-time chat with 1:1 and group messaging, online presence, and a scalable socket architecture.",
+      image:
+        "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=60",
+      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Redis"],
     },
   ]
 
@@ -65,7 +65,7 @@ const Projects = () => {
     <section id="projects" className="section projects" ref={projectsRef}>
       <div className="container">
         <h2 className="section-title">Projects</h2>
-        <p className="section-subtitle">A showcase of my recent work and projects I've been involved with</p>
+          <p className="section-subtitle">A showcase of my recent work and projects I’ve been involved with</p>
 
         <div className="projects-grid">
           {projects.map((project) => (
@@ -84,12 +84,19 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="project-links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                    <FaGithub /> Code
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <FaGithub /> Code
+                    </a>
+                  )}
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <FaExternalLinkAlt /> Live Demo
+                    </a>
+                  )}
+                  <Link to={`/projects/${project.slug}`} className="project-link">
+                    Details <FaArrowRight />
+                  </Link>
                 </div>
               </div>
             </div>

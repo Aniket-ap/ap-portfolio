@@ -15,6 +15,9 @@ import {
   FaWordpress,
 } from "react-icons/fa"
 import {
+  SiGoogleads,
+  SiGoogleanalytics,
+  SiGoogletagmanager,
   SiTypescript,
   SiMongodb,
   SiExpress,
@@ -24,6 +27,7 @@ import {
   SiShopify,
   SiJenkins,
 } from "react-icons/si"
+import "./Skills.css"
 
 const Skills = () => {
   const skillsRef = useRef(null)
@@ -77,22 +81,28 @@ const Skills = () => {
     { name: "Shopify", icon: <SiShopify className="skill-icon shopify" /> },
   ]
 
+  const analyticsSkills = [
+    { name: "Google Tag Manager", icon: <SiGoogletagmanager className="skill-icon gtm" /> },
+    { name: "Google Analytics (GA4)", icon: <SiGoogleanalytics className="skill-icon ga4" /> },
+    { name: "Google Ads", icon: <SiGoogleads className="skill-icon gads" /> },
+    { name: "Data Layer", icon: <FaJs className="skill-icon js" /> },
+    { name: "Offline Conversions", icon: <FaNodeJs className="skill-icon node" /> },
+  ]
+
   return (
     <section id="skills" className="section skills" ref={skillsRef}>
       <div className="container">
         <h2 className="section-title">SKILLS</h2>
         <p className="section-subtitle">
-          A collection of my technical skills and expertise honed through various projects and experiences
+          Technologies I use to build products end-to-end, from UI and APIs to CMS, tracking, and analytics
         </p>
 
-        <div className="skills-grid">
-          <div className="skill-card">
-            <div className="skill-card-header">
-              <h3>Frontend Development</h3>
-            </div>
-            <div className="skill-card-content">
+        <div className="skills-container">
+          <div className="skills-category">
+            <h3>Frontend Development</h3>
+            <div className="skills-grid">
               {frontendSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
+                <div className="skill-pill" key={index}>
                   {skill.icon}
                   <span>{skill.name}</span>
                 </div>
@@ -100,13 +110,11 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="skill-card">
-            <div className="skill-card-header">
-              <h3>Backend Development</h3>
-            </div>
-            <div className="skill-card-content">
+          <div className="skills-category">
+            <h3>Backend Development</h3>
+            <div className="skills-grid">
               {backendSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
+                <div className="skill-pill" key={index}>
                   {skill.icon}
                   <span>{skill.name}</span>
                 </div>
@@ -114,13 +122,23 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="skill-card">
-            <div className="skill-card-header">
-              <h3>Tools & Platforms</h3>
-            </div>
-            <div className="skill-card-content">
+          <div className="skills-category">
+            <h3>Tools & Platforms</h3>
+            <div className="skills-grid">
               {toolsSkills.map((skill, index) => (
-                <div className="skill-item" key={index}>
+                <div className="skill-pill" key={index}>
+                  {skill.icon}
+                  <span>{skill.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skills-category">
+            <h3>Analytics & Tracking</h3>
+            <div className="skills-grid">
+              {analyticsSkills.map((skill, index) => (
+                <div className="skill-pill" key={index}>
                   {skill.icon}
                   <span>{skill.name}</span>
                 </div>

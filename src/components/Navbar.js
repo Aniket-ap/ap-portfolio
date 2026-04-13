@@ -1,13 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa"
 import "./Navbar.css"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,46 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
+  }
+
+  const scrollToSection = (sectionId) => {
+    const target = document.getElementById(sectionId)
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
+  const scrollToSectionWithRetry = (sectionId) => {
+    let attemptCount = 0
+    const maxAttempts = 30
+
+    const tryScroll = () => {
+      attemptCount += 1
+      const target = document.getElementById(sectionId)
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" })
+        return
+      }
+
+      if (attemptCount < maxAttempts) {
+        window.setTimeout(tryScroll, 50)
+      }
+    }
+
+    tryScroll()
+  }
+
+  const handleNavToSection = (e, sectionId) => {
+    e.preventDefault()
+    setMenuOpen(false)
+
+    if (location.pathname !== "/") {
+      navigate("/")
+      scrollToSectionWithRetry(sectionId)
+      return
+    }
+
+    scrollToSection(sectionId)
   }
 
   return (
@@ -43,32 +85,27 @@ const Navbar = () => {
 
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
-            <a href="#about" onClick={() => setMenuOpen(false)}>
+            <a href="#about" onClick={(e) => handleNavToSection(e, "about")}>
               About
             </a>
           </li>
           <li>
-            <a href="#skills" onClick={() => setMenuOpen(false)}>
+            <a href="#skills" onClick={(e) => handleNavToSection(e, "skills")}>
               Skills
             </a>
           </li>
           <li>
-            <a href="#experience" onClick={() => setMenuOpen(false)}>
+            <a href="#experience" onClick={(e) => handleNavToSection(e, "experience")}>
               Experience
             </a>
           </li>
-          {/* <li>
-            <a href="#projects" onClick={() => setMenuOpen(false)}>
-              Projects
-            </a>
-          </li> */}
           <li>
-            <a href="#blogs" onClick={() => setMenuOpen(false)}>
-              Blogs
+            <a href="#projects" onClick={(e) => handleNavToSection(e, "projects")}>
+              Projects
             </a>
           </li>
           <li>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
+            <a href="#contact" onClick={(e) => handleNavToSection(e, "contact")}>
               Contact
             </a>
           </li>

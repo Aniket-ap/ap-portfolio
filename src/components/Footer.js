@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           <p className="footer-text">
-            Senior Web Developer specializing in creating modern and responsive web applications.
+            Full Stack Developer specializing in modern web applications, CMS builds, and analytics-driven growth.
           </p>
 
           <div className="footer-social">
@@ -36,8 +36,7 @@ const Footer = () => {
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
-            {/* <a href="#projects">Projects</a> */}
-            <a href="#blogs">Blogs</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
           </div>
 
