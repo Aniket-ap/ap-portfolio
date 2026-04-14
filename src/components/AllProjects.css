@@ -27,6 +27,23 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+.project-details--featured {
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  background: radial-gradient(900px circle at 0% 0%, rgba(138, 43, 226, 0.12), transparent 45%),
+    radial-gradient(900px circle at 100% 100%, rgba(157, 78, 221, 0.1), transparent 45%), var(--card-bg);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+}
+
+.project-details--featured .project-links {
+  gap: 0.75rem;
+}
+
+.project-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .project-details-hero {
   display: grid;
   grid-template-columns: 1.2fr 1fr;

@@ -33,12 +33,14 @@ const Projects = () => {
     {
       id: 1,
       slug: "ecommerce-app",
-      title: "Ecommerce App",
+      title: "Bellaveste eCommerce",
       description:
-        "A modern e-commerce experience with product discovery, cart, checkout flow, and an admin-friendly structure.",
-      image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=60",
-      technologies: ["Next.js", "React", "Node.js", "MongoDB", "Stripe"],
+        "Fashion e-commerce storefront with auth, product browsing, cart, checkout, orders, and profile features.",
+      image: "/project-1.png",
+      live: "https://bellaveste-frontend.vercel.app/",
+      github: "https://github.com/Aniket-ap/bellaveste-frontend",
+      githubBackend: "https://github.com/Aniket-ap/bellaveste-backend",
+      technologies: ["React", "Vite", "Redux Toolkit", "Node.js", "Express", "MongoDB"],
     },
     {
       id: 2,
@@ -68,39 +70,107 @@ const Projects = () => {
           <p className="section-subtitle">A showcase of my recent work and projects I’ve been involved with</p>
 
         <div className="projects-grid">
-          {projects.map((project) => (
-            <div className="project-card" key={project.id}>
-              <div className="project-image">
-                <img src={project.image || "/placeholder.svg"} alt={project.title} />
-              </div>
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-tech">
-                  {project.technologies.map((tech, index) => (
-                    <span className="tech-pill" key={index}>
-                      {tech}
-                    </span>
-                  ))}
+          {projects.map((project) => {
+            const isBellaveste = project.slug === "ecommerce-app"
+
+            if (isBellaveste) {
+              return (
+                <div className="project-card project-card--featured" key={project.id}>
+                  <div className="project-image project-image--featured">
+                    <img src={project.image || "/placeholder.svg"} alt={project.title} />
+                    <div className="project-image-overlay">
+                      <div className="project-badge">Featured</div>
+                      <div className="project-quick-links">
+                        {project.live && (
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-quick-link"
+                          >
+                            <FaExternalLinkAlt /> Live
+                          </a>
+                        )}
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-quick-link"
+                          >
+                            <FaGithub /> Frontend
+                          </a>
+                        )}
+                        {project.githubBackend && (
+                          <a
+                            href={project.githubBackend}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-quick-link"
+                          >
+                            <FaGithub /> Backend
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="project-content">
+                    <div className="project-title-row">
+                      <h3 className="project-title">{project.title}</h3>
+                      <span className="project-chip">Full Stack</span>
+                    </div>
+                    <p className="project-description">{project.description}</p>
+                    <div className="project-tech">
+                      {project.technologies.map((tech, index) => (
+                        <span className="tech-pill" key={index}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      <Link to={`/projects/${project.slug}`} className="project-link">
+                        Details <FaArrowRight />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="project-links">
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaGithub /> Code
-                    </a>
-                  )}
-                  {project.live && (
-                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
-                  )}
-                  <Link to={`/projects/${project.slug}`} className="project-link">
-                    Details <FaArrowRight />
-                  </Link>
+              )
+            }
+
+            return (
+              <div className="project-card" key={project.id}>
+                <div className="project-image">
+                  <img src={project.image || "/placeholder.svg"} alt={project.title} />
+                </div>
+                <div className="project-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-tech">
+                    {project.technologies.map((tech, index) => (
+                      <span className="tech-pill" key={index}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-links">
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <FaGithub /> Code
+                      </a>
+                    )}
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
+                        <FaExternalLinkAlt /> Live Demo
+                      </a>
+                    )}
+                    <Link to={`/projects/${project.slug}`} className="project-link">
+                      Details <FaArrowRight />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         <div className="view-all-container">

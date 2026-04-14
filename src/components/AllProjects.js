@@ -37,25 +37,27 @@ const AllProjects = () => {
     {
       id: 1,
       slug: "ecommerce-app",
-      title: "Ecommerce App",
+      title: "Bellaveste eCommerce",
       description:
-        "A modern e-commerce experience with product discovery, cart, checkout flow, and an admin-friendly structure.",
-      image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=60",
-      technologies: ["Next.js", "React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+        "Fashion e-commerce storefront with authentication, product browsing, cart, checkout, orders, and profile features.",
+      image: "/project-1.png",
+      live: "https://bellaveste-frontend.vercel.app/",
+      github: "https://github.com/Aniket-ap/bellaveste-frontend",
+      githubBackend: "https://github.com/Aniket-ap/bellaveste-backend",
+      technologies: ["React", "Vite", "Redux Toolkit", "Node.js", "Express", "MongoDB"],
       highlights: [
-        "Product listing and search-ready structure",
-        "Cart and checkout flow with order summary",
-        "Clean component architecture for scaling features",
+        "Auth with access + refresh token flow",
+        "Cart, checkout, and order history",
+        "Profile tabs (addresses, purchased items, wishlist)",
       ],
       details: {
         overview:
-          "This project focuses on building a practical e-commerce foundation: reusable UI components, predictable state, and a checkout flow that’s easy to extend with payments, shipping rules, and promotions.",
+          "Bellaveste is a full-stack e-commerce app with a modern storefront UX and a production-style API. It focuses on clean state management, guarded routes, resilient checkout flows, and scalable feature patterns (cart, orders, wishlist, profile).",
         features: [
-          "Product catalog UI with categories and product detail structure",
-          "Cart management with quantity updates and totals",
-          "Checkout-ready pages with validation-ready form layout",
-          "Extensible admin patterns for products and orders",
+          "Lazy-loaded routes with auth-guarded pages (checkout, orders)",
+          "Cart sync (local state + server persistence when logged in)",
+          "Checkout flow with order creation and payment status update",
+          "Wishlist and profile sections with saved addresses",
         ],
       },
     },
@@ -118,7 +120,9 @@ const AllProjects = () => {
         )}
 
         {selectedProject ? (
-          <div className="project-details">
+          <div
+            className={`project-details ${selectedProject.slug === "ecommerce-app" ? "project-details--featured" : ""}`}
+          >
             <div className="project-details-hero">
               <div className="project-details-image">
                 <img src={selectedProject.image} alt={selectedProject.title} />
@@ -136,15 +140,57 @@ const AllProjects = () => {
                 </div>
 
                 <div className="project-links">
-                  {selectedProject.github && (
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaGithub /> Code
-                    </a>
-                  )}
-                  {selectedProject.live && (
-                    <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
+                  {selectedProject.slug === "ecommerce-app" ? (
+                    <>
+                      {selectedProject.live && (
+                        <a
+                          href={selectedProject.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary project-details-btn"
+                        >
+                          <FaExternalLinkAlt /> Live Website
+                        </a>
+                      )}
+                      {selectedProject.github && (
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline project-details-btn"
+                        >
+                          <FaGithub /> Frontend Repo
+                        </a>
+                      )}
+                      {selectedProject.githubBackend && (
+                        <a
+                          href={selectedProject.githubBackend}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline project-details-btn"
+                        >
+                          <FaGithub /> Backend Repo
+                        </a>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {selectedProject.github && (
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                        >
+                          <FaGithub /> Code
+                        </a>
+                      )}
+                      {selectedProject.live && (
+                        <a href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="project-link">
+                          <FaExternalLinkAlt /> Live Demo
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -198,39 +244,107 @@ const AllProjects = () => {
             <p className="section-subtitle">Selected work showcasing full-stack development, backend design, and real-time systems</p>
 
             <div className="all-projects-grid">
-              {projects.map((project) => (
-                <div className="project-card" key={project.id}>
-                  <div className="project-image">
-                    <img src={project.image || "/placeholder.svg"} alt={project.title} />
-                  </div>
-                  <div className="project-content">
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-description">{project.description}</p>
-                    <div className="project-tech">
-                      {project.technologies.map((tech, index) => (
-                        <span className="tech-pill" key={index}>
-                          {tech}
-                        </span>
-                      ))}
+              {projects.map((project) => {
+                const isBellaveste = project.slug === "ecommerce-app"
+
+                if (isBellaveste) {
+                  return (
+                    <div className="project-card project-card--featured" key={project.id}>
+                      <div className="project-image project-image--featured">
+                        <img src={project.image || "/placeholder.svg"} alt={project.title} />
+                        <div className="project-image-overlay">
+                          <div className="project-badge">Featured</div>
+                          <div className="project-quick-links">
+                            {project.live && (
+                              <a
+                                href={project.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="project-quick-link"
+                              >
+                                <FaExternalLinkAlt /> Live
+                              </a>
+                            )}
+                            {project.github && (
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="project-quick-link"
+                              >
+                                <FaGithub /> Frontend
+                              </a>
+                            )}
+                            {project.githubBackend && (
+                              <a
+                                href={project.githubBackend}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="project-quick-link"
+                              >
+                                <FaGithub /> Backend
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="project-content">
+                        <div className="project-title-row">
+                          <h3 className="project-title">{project.title}</h3>
+                          <span className="project-chip">Full Stack</span>
+                        </div>
+                        <p className="project-description">{project.description}</p>
+                        <div className="project-tech">
+                          {project.technologies.map((tech, index) => (
+                            <span className="tech-pill" key={index}>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="project-links">
+                          <Link to={`/projects/${project.slug}`} className="project-link">
+                            Details <FaArrowRight />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                    <div className="project-links">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                          <FaGithub /> Code
-                        </a>
-                      )}
-                      {project.live && (
-                        <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
-                          <FaExternalLinkAlt /> Live Demo
-                        </a>
-                      )}
-                      <Link to={`/projects/${project.slug}`} className="project-link">
-                        Details <FaArrowRight />
-                      </Link>
+                  )
+                }
+
+                return (
+                  <div className="project-card" key={project.id}>
+                    <div className="project-image">
+                      <img src={project.image || "/placeholder.svg"} alt={project.title} />
+                    </div>
+                    <div className="project-content">
+                      <h3 className="project-title">{project.title}</h3>
+                      <p className="project-description">{project.description}</p>
+                      <div className="project-tech">
+                        {project.technologies.map((tech, index) => (
+                          <span className="tech-pill" key={index}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="project-links">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                            <FaGithub /> Code
+                          </a>
+                        )}
+                        {project.live && (
+                          <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
+                            <FaExternalLinkAlt /> Live Demo
+                          </a>
+                        )}
+                        <Link to={`/projects/${project.slug}`} className="project-link">
+                          Details <FaArrowRight />
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </>
         )}
